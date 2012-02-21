@@ -44,13 +44,17 @@ class PagesController extends AppController {
  * @var array
  */
 	public $helpers = array('Html', 'Session');
-
+        var $components = array('Auth','Security','Session');
+        
+        //public $components = array('RecaptchaPlugin.Recaptcha');
+	//public $helpers = array('RecaptchaPlugin.Recaptcha');
+        
 /**
  * This controller does not use a model
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('User');
 
 /**
  * Displays a view
@@ -58,6 +62,15 @@ class PagesController extends AppController {
  * @param mixed What page to display
  * @return void
  */
+        /**
+     * Runs automatically before the controller action is called
+         */
+        function beforeFilter()
+        {
+            $this->Auth->allow('register');
+            parent::beforeFilter();
+        }
+
 	public function display() {
 		$path = func_get_args();
 
@@ -79,4 +92,37 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}
+
+        //Registration
+
+        function register(){
+            
+           if ($this->request->is('post')) {
+            $this->User->create();
+            
+            /** $save_data = array(
+                            'full_name' => $this->data['User']['full_name'],
+                            'email' => $this->data['User']['email'],
+                            'user_name' => $this->data['User']['user_name'],
+                            'password' => $this->data['User']['password'],
+                            'paypal_account_name' => $this->data['User']['paypal_account_name'],
+                            'address' => $this->data['User']['address'],
+                            'phone' => $this->data['User']['phone'],
+                            'status' => 'active',
+                        ); 
+        
+            $insert = $this->User->save($save_data); **/
+            $insert = $this->User->save($this->request->data);
+            if ($insert) {
+                    $this->Session->setFlash(__('The user has been saved'));
+                    $this->redirect(array('action' => '/register'));
+                } else {
+                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                }
+            }
+
+        }
+        
+  
+   
 }
