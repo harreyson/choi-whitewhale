@@ -63,5 +63,10 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
-Configure::write('Recaptcha.publicKey', '6LcZ2s0SAAAAAP5R4gifOZG5c7Gjwo4Zx9qrTWgc');
-Configure::write('Recaptcha.privateKey', '6LcZ2s0SAAAAAIMHnTBUAOBCiN-i7rtEULHWIwxk');
+// for my local
+//Configure::write('Recaptcha.publicKey', '6LcZ2s0SAAAAAP5R4gifOZG5c7Gjwo4Zx9qrTWgc');
+//Configure::write('Recaptcha.privateKey', '6LcZ2s0SAAAAAIMHnTBUAOBCiN-i7rtEULHWIwxk');
+
+//for server
+Configure::write('Recaptcha.publicKey', '6Lf_M84SAAAAABzQICL2oyqqEWy0Hb0dR0rWRH9O');
+Configure::write('Recaptcha.privateKey', '6Lf_M84SAAAAABi9iaMvpa9lijUIiUOCRMTDJQhv');
