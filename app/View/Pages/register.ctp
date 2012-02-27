@@ -24,6 +24,9 @@ echo $this->Form->input('phone');
 echo $this->Form->input('user_name',array('label' => 'Username'));
 echo $this->Form->input('password', array('label' => 'Password','type' => 'password'));
 echo $this->Form->input('password_confirm', array('label' => 'Password Confirm', 'type' => 'password'));
+echo "Captcha";
+echo $this->Recaptcha->display(array('recaptchaOptions' => array('theme' => 'white')));
+echo '<br>';
 echo $this->Form->end('Register');
 ?>
 </p>

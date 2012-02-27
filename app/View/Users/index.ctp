@@ -5,11 +5,11 @@
 			<th><?php echo $this->Paginator->sort('user_id');?></th>
 			<th><?php echo $this->Paginator->sort('full_name');?></th>
 			<th><?php echo $this->Paginator->sort('user_name');?></th>
-			<th><?php echo $this->Paginator->sort('password');?></th>
+		
 			<th><?php echo $this->Paginator->sort('paypal_account_name');?></th>
 			<th><?php echo $this->Paginator->sort('address');?></th>
 			<th><?php echo $this->Paginator->sort('phone');?></th>
-			<th><?php echo $this->Paginator->sort('last_login');?></th>
+		
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -18,11 +18,11 @@
 		<td><?php echo h($user['User']['user_id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['full_name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['user_name']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
+
 		<td><?php echo h($user['User']['paypal_account_name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['address']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['phone']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['last_login']); ?>&nbsp;</td>
+	
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['user_id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['user_id'])); ?>

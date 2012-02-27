@@ -21,10 +21,8 @@ class User extends AppModel {
 
     var $validate = array(
         'full_name' => array(
-            'length' => array(
-                'rule'      => array('minLength', 5),
-                'message'   => 'Must be more than 5 characters',
-                'required'  => true,
+            'empty' => array(
+                'rule'      => 'notEmpty',
                 'message'   => 'Full Name is Required',
             ),
         ),

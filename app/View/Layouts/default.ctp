@@ -39,16 +39,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">White Whale Cards</a>
+          <a class="brand" href="#">White-Whale</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><?php echo $this->Html->link('Home', '/'); ?></li>
-			  <li><?php echo $this->Html->link('Admin', '/admin'); ?></li>
-              <li><?php echo $this->Html->link('Cards', '/cardhome'); ?></li>
-              <li><?php echo $this->Html->link('Sets', '/sethome'); ?></li>
-              <li><?php echo $this->Html->link('My Collection', '/mycollection'); ?></li>
-             <<li><?php echo $this->Html->link('Account', '/myaccount'); ?></li>
-              
+               <li class="active"><?php echo $this->Html->link('Register', '/pages/register'); ?></li>
+               <li><?php echo $this->Html->link('Users', '/users'); ?></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -56,16 +51,10 @@
     </div>
 
   
-
      <div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $content_for_layout; ?>
-
 	</div>
-
-
 
   </body>
 </html>

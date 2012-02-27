@@ -3,13 +3,14 @@
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-		echo $this->Form->input('full_name');
-		echo $this->Form->input('user_name');
-		echo $this->Form->input('password');
-		echo $this->Form->input('paypal_account_name');
-		echo $this->Form->input('address');
-		echo $this->Form->input('phone');
-		echo $this->Form->input('last_login');
+		echo $this->Form->input('full_name',array('label' => 'Full Name'));
+                echo $this->Form->input('email');
+                echo $this->Form->input('paypal_account_name');
+                echo $this->Form->input('address', array('type' => 'textarea'));
+                echo $this->Form->input('phone');
+                echo $this->Form->input('user_name',array('label' => 'Username'));
+                echo $this->Form->input('password', array('label' => 'Password','type' => 'password'));
+                echo $this->Form->input('password_confirm', array('label' => 'Password Confirm', 'type' => 'password'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

@@ -25,7 +25,7 @@
 
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));
-
+//Configure::load('Recaptcha.key', 'default');
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
  *
@@ -63,3 +63,5 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+Configure::write('Recaptcha.publicKey', '6LcZ2s0SAAAAAP5R4gifOZG5c7Gjwo4Zx9qrTWgc');
+Configure::write('Recaptcha.privateKey', '6LcZ2s0SAAAAAIMHnTBUAOBCiN-i7rtEULHWIwxk');

@@ -5,13 +5,19 @@
 	<?php
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('full_name');
-		echo $this->Form->input('user_name');
-		echo $this->Form->input('password');
+                echo $this->Form->input('email');
 		echo $this->Form->input('paypal_account_name');
-		echo $this->Form->input('address');
-		echo $this->Form->input('phone');
-		echo $this->Form->input('last_login');
+		echo $this->Form->input('address',array('type' => 'textarea'));
+                echo $this->Form->input('phone');
+		echo $this->Form->input('user_name');
+		//echo $this->Form->input('password',array('type' => 'text'));
+               $status = $this->request->data['User']['status'];                
 	?>
+                Status </br>
+                <select name="data[User][status]">
+                  <option value="active" <?php if($status == 'active'){ ?> selected="selected" <?php } ?> >Active</option>
+                  <option value="inactive" <?php if($status == 'inactive'){ ?> selected="selected" <?php } ?> >Inactive</option>
+                </select> 
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
 </div>

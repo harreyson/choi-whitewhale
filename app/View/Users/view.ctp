@@ -16,9 +16,9 @@
 			<?php echo h($user['User']['user_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Password'); ?></dt>
+                <dt><?php echo __('Email'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['password']); ?>
+			<?php echo h($user['User']['email']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Paypal Account Name'); ?></dt>
@@ -36,11 +36,12 @@
 			<?php echo h($user['User']['phone']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Last Login'); ?></dt>
+                <dt><?php echo __('Status'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['last_login']); ?>
+			<?php echo h($user['User']['status']); ?>
 			&nbsp;
 		</dd>
+	
 	</dl>
 </div>
 <div class="actions">

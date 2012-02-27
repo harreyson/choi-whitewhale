@@ -1,4 +1,5 @@
 <?php
+echo 'ra';
 /**
  * Static content controller.
  *
@@ -43,11 +44,8 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $helpers = array('Html', 'Session');
-        var $components = array('Auth','Security','Session');
-        
-        //public $components = array('RecaptchaPlugin.Recaptcha');
-	//public $helpers = array('RecaptchaPlugin.Recaptcha');
+	public $helpers = array('Html', 'Session','Recaptcha');
+        var $components = array('Auth','Security','Session','Recaptcha');
         
 /**
  * This controller does not use a model
@@ -67,6 +65,7 @@ class PagesController extends AppController {
          */
         function beforeFilter()
         {
+            $this->Security->blackHoleCallback = 'blackhole';
             $this->Auth->allow('register');
             parent::beforeFilter();
         }
@@ -96,10 +95,10 @@ class PagesController extends AppController {
         //Registration
 
         function register(){
-            
+
            if ($this->request->is('post')) {
-            $this->User->create();
-            
+             $this->User->create();
+             
             /** $save_data = array(
                             'full_name' => $this->data['User']['full_name'],
                             'email' => $this->data['User']['email'],
@@ -110,19 +109,24 @@ class PagesController extends AppController {
                             'phone' => $this->data['User']['phone'],
                             'status' => 'active',
                         ); 
-        
-            $insert = $this->User->save($save_data); **/
-            $insert = $this->User->save($this->request->data);
-            if ($insert) {
-                    $this->Session->setFlash(__('The user has been saved'));
-                    $this->redirect(array('action' => '/register'));
-                } else {
-                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-                }
-            }
+            $insert = $this->User->save($save_data); 
+            $insert = $this->User->save($this->request->data); **/
+                //var_dump($this->Recaptcha->verify());
 
+
+                    if ($this->Recaptcha->verify()){
+                        if ($this->User->save($this->request->data)) {
+                                $this->Session->setFlash(__('The user has been saved'));
+                                $this->redirect(array('action' => '/register'));
+
+                            } else {
+                                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                            }
+                        
+                   }else{
+                       $this->Session->setFlash(__($this->Recaptcha->error));
+                   }
+            }
         }
         
-  
-   
 }
