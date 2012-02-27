@@ -26,7 +26,8 @@ echo $this->Form->input('password', array('label' => 'Password','type' => 'passw
 echo $this->Form->input('password_confirm', array('label' => 'Password Confirm', 'type' => 'password'));
 echo "Captcha";
 echo $this->Recaptcha->display(array('recaptchaOptions' => array('theme' => 'white')));
-echo '<br>';
+if($error) { echo $error.'<br>'; }
+echo '<br><br>';
 echo $this->Form->end('Register');
 ?>
 </p>

@@ -94,25 +94,25 @@ class PagesController extends AppController {
         //Registration
 
         function register(){
-
+            $this->set('error', "");
            if ($this->request->is('post')) {
-             $this->User->create();
-         
-                        if ($this->User->save($this->request->data)) {
+               $this->User->create();
+               
+                           if (!$this->User->save($this->request->data)){
+                               $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                           }  
 
                                 if ($this->Recaptcha->verify()){
+                                    $this->User->save($this->request->data);
                                     $this->Session->setFlash(__('The user has been saved'));
                                     $this->redirect(array('action' => '/register'));
-
-                               }else{
-                                   $this->Session->setFlash(__($this->Recaptcha->error));
-                              }
-
-                            } else {
-                                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-                           }
-            
-            }
+                                }else{
+                                     $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                                    $captchaerror = $this->Recaptcha->error;
+                                    $this->set('error', $captchaerror);
+                                }
+                           
+                }
         }
         
 }
