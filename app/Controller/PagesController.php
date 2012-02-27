@@ -1,5 +1,4 @@
 <?php
-echo 'ra';
 /**
  * Static content controller.
  *
