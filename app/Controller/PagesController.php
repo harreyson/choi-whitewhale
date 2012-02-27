@@ -97,34 +97,21 @@ class PagesController extends AppController {
 
            if ($this->request->is('post')) {
              $this->User->create();
-             
-            /** $save_data = array(
-                            'full_name' => $this->data['User']['full_name'],
-                            'email' => $this->data['User']['email'],
-                            'user_name' => $this->data['User']['user_name'],
-                            'password' => $this->data['User']['password'],
-                            'paypal_account_name' => $this->data['User']['paypal_account_name'],
-                            'address' => $this->data['User']['address'],
-                            'phone' => $this->data['User']['phone'],
-                            'status' => 'active',
-                        ); 
-            $insert = $this->User->save($save_data); 
-            $insert = $this->User->save($this->request->data); **/
-                //var_dump($this->Recaptcha->verify());
-
-
-                    if ($this->Recaptcha->verify()){
+         
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('The user has been saved'));
-                                $this->redirect(array('action' => '/register'));
+
+                                if ($this->Recaptcha->verify()){
+                                    $this->Session->setFlash(__('The user has been saved'));
+                                    $this->redirect(array('action' => '/register'));
+
+                               }else{
+                                   $this->Session->setFlash(__($this->Recaptcha->error));
+                              }
 
                             } else {
                                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-                            }
-                        
-                   }else{
-                       $this->Session->setFlash(__($this->Recaptcha->error));
-                   }
+                           }
+            
             }
         }
         
